@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">ChatApplication</string>
+    <string name="todo">TODO</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="log_in">Log In</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="username">Username</string>
+</resources>

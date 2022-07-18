@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "466835512723",
+    "project_id": "chatapplication-6f90b",
+    "storage_bucket": "chatapplication-6f90b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:466835512723:android:875ae1c50a22a8f102dc66",
+        "android_client_info": {
+          "package_name": "com.sirajlekhak.chatapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "466835512723-tcmtsk69mkqvmao1ud88nrooh2hdf3g4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA5u9OtxMdLIazGeb0y8JGUBM0m69viMBQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "466835512723-tcmtsk69mkqvmao1ud88nrooh2hdf3g4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
