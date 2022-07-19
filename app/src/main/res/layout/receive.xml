@@ -5,8 +5,9 @@
 
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:background="@drawable/edt_background"
-        android:layout_marginLeft="5dp"
+        android:background="@drawable/chatcorner_receive"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="50dp"
         android:layout_marginTop="5dp"
         android:layout_height="wrap_content">
 
@@ -15,7 +16,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="This is receive message"
+            android:textColor="@color/white"
             android:padding="10dp"
+            android:layout_marginLeft="5dp"
             android:textSize="18sp"/>
 
     </RelativeLayout>

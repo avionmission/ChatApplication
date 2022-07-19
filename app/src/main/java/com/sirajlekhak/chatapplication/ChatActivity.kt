@@ -74,6 +74,8 @@ class ChatActivity : AppCompatActivity() {
         // adding the message to database
         sendButton.setOnClickListener{
 
+
+
             val message = messageBox.text.toString()
             val messageObject = Message(message,senderUid)
 
