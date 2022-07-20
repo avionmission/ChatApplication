@@ -3,13 +3,18 @@ package com.sirajlekhak.chatapplication
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.Toast
+import androidx.core.view.marginBottom
+import androidx.core.view.size
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import java.sql.Time
 
 class ChatActivity : AppCompatActivity() {
 
@@ -38,19 +43,31 @@ class ChatActivity : AppCompatActivity() {
 
         supportActionBar?.title = name
 
-        chatRecyclerView = findViewById(R.id.chatRecyclerView)
+        chatRecyclerView = findViewById<RecyclerView?>(R.id.chatRecyclerView)
         messageBox = findViewById(R.id.messageBox)
         sendButton = findViewById(R.id.sentButton)
         messageList = ArrayList()
         messageAdapter = MessageAdapter(this,messageList)
 
+
         chatRecyclerView.layoutManager = LinearLayoutManager(this)
         chatRecyclerView.adapter = messageAdapter
 
+
+
+
+
         // logic for adding data to recyclerView
         mDbRef.child("chats").child(senderRoom!!).child("messages")
-            .addValueEventListener(object: ValueEventListener{
+
+
+
+                .addValueEventListener(object: ValueEventListener{
+
+
                 override fun onDataChange(snapshot: DataSnapshot) {
+
+                    chatRecyclerView.scrollToPosition(messageList.size)
 
                     messageList.clear()
 
@@ -58,6 +75,7 @@ class ChatActivity : AppCompatActivity() {
 
                         val message = postSnapshot.getValue(Message::class.java)
                         messageList.add(message!!)
+                        chatRecyclerView.scrollToPosition(messageList.size-1)
                     }
                     messageAdapter.notifyDataSetChanged()
 
@@ -72,19 +90,29 @@ class ChatActivity : AppCompatActivity() {
 
 
         // adding the message to database
-        sendButton.setOnClickListener{
-
+        sendButton.setOnClickListener {
 
 
             val message = messageBox.text.toString()
-            val messageObject = Message(message,senderUid)
 
-            mDbRef.child("chats").child(senderRoom!!).child("messages").push()
-                .setValue(messageObject).addOnSuccessListener {
-                    mDbRef.child("chats").child(receiverRoom!!).child("messages").push()
-                        .setValue(messageObject)
-                }
-        messageBox.setText("")
+            if (message != ""){
+                val messageObject = Message(message, senderUid)
+
+                mDbRef.child("chats").child(senderRoom!!).child("messages").push()
+                    .setValue(messageObject).addOnSuccessListener {
+                        mDbRef.child("chats").child(receiverRoom!!).child("messages").push()
+                            .setValue(messageObject)
+                    }
+                messageBox.setText("")
+            }
+            else{
+                Toast.makeText(this,"Enter some message", Toast.LENGTH_SHORT).show()
+            }
         }
     }
+
+
+
 }
+
+
